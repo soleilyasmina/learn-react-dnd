@@ -2,7 +2,10 @@ import React from 'react';
 
 const Column = (props) => {
   return (
-    props.column.title
+    <div className="container">
+      <h3 className="title">{props.column.title}</h3>
+      <div className="tasklist">Tasks go here.</div>
+    </div>
   )
 }
 
