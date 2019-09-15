@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import Column from './components/Column';
 import initialData from './assets/data';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
         const tasks = column.taskIds.map((taskId) => {
           return data.tasks[taskId];
         });
-        return column.title;
+        return <Column key={column.id} column={column} tasks={tasks} />;
       }) }
     </div>
   );
