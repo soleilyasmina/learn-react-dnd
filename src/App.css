@@ -11,3 +11,10 @@
 .tasklist {
   padding: 8px;
 }
+
+.task-container {
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
