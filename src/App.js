@@ -14,23 +14,27 @@ function App() {
       return;
     }
 
-    if (destination.droppableId === source.droppableI &&
+    if (destination.droppableId === source.droppableId &&
       destination.index === source.index) {
       return;
     }
 
-    const column = data.columns[source.droppableId];
-    const newTaskIds = Array.from(column.taskIds);
-    newTaskIds.splice(source.index, 1);
-    newTaskIds.splice(destination.index, 0, draggableId);
-
-    const newColumn = { ...column, taskIds: newTaskIds };
+    const sourceColumn = data.columns[source.droppableId];
+    const destinationColumn = data.columns[destination.droppableId];
+    const sourceTaskIds = Array.from(sourceColumn.taskIds);
+    const destinationTaskIds = Array.from(destinationColumn.taskIds);
+    sourceTaskIds.splice(source.index, 1);
+    destinationTaskIds.splice(destination.index, 0, draggableId);
+    
+    const oldColumn = { ...sourceColumn, taskIds: sourceTaskIds }
+    const newColumn = { ...destinationColumn, taskIds: destinationTaskIds };
 
     const newState = {
       ...data,
       columns: {
         ...data.columns,
         [newColumn.id]: newColumn,
+        [oldColumn.id]: oldColumn 
       }
     }
 
